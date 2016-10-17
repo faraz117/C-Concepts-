@@ -11,18 +11,24 @@ class Pair{
     Type2 second;
     
     public:
+    // Constructor Overloading
     //Pair() : first(Type1()), second(Type2()){}
-    Pair(const Type1& t1, const Type2& t2) : 
-    first(t1), second(t2){} 
+    Pair(Type1 t1=Type1(),Type2 t2=Type2()) : 
+    first(t1), second(t2){
+    } 
     Pair(const Pair<Type1, Type2>& OtherPair) : 
     first(OtherPair.first),
     second(OtherPair.second)
     {}
+    //
     void printData(){
         cout<<first<<endl;
         cout<<second<<endl;
     }
+    
+
 };
+
 
 template<class T>
 class Thing {
@@ -56,4 +62,8 @@ int main (){
     duple.printData();
     Pair<int,int> duple1(duple);
     duple1.printData();
+    int i=21;
+    int j=10;
+    Pair<int,int> duple2(i,j);
+    duple2.printData();
 }
