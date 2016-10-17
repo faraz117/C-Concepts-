@@ -1,0 +1,67 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+#include <functional>
+
+using namespace std;
+
+class Matrix{
+    private:
+    public:
+    	vector<vector<int> > a;
+    	// 2  2// vector<int>
+    	// 2  2// vector<int>
+};
+
+Matrix operator +(const Matrix& MatrixA,const Matrix& MatrixB){
+	Matrix matrix;
+	vector<int>::size_type rowA = MatrixA.a.size();
+	vector<int>::size_type rowB = MatrixB.a.size();
+	// lets assume that the matrices are equal
+	for(int num=0 ; num < rowA ; num++){
+		vector<int> tempVector;
+		transform(MatrixA.a[num].begin(),MatrixA.a[num].end(),MatrixB.a[num].begin(),back_inserter(tempVector),plus<int>());
+		matrix.a.push_back(tempVector);
+	}
+	return matrix;
+}
+
+int main () {
+   int cases,k;
+   cin >> cases;
+   for(k=0;k<cases;k++) {
+      Matrix x;
+      Matrix y;
+      Matrix result;
+      int n,m,i,j;
+      cin >> n >> m;
+      for(i=0;i<n;i++) {
+         vector<int> b;
+         int num;
+         for(j=0;j<m;j++) {
+            cin >> num;
+            b.push_back(num);
+         }
+         x.a.push_back(b);
+      }
+      for(i=0;i<n;i++) {
+         vector<int> b;
+         int num;
+         for(j=0;j<m;j++) {
+            cin >> num;
+            b.push_back(num);
+         }
+         y.a.push_back(b);
+      }
+      result = x+y;
+      for(i=0;i<n;i++) {
+         for(j=0;j<m;j++) {
+            cout << result.a[i][j] << " ";
+         }
+         cout << endl;
+      }
+   }  
+   return 0;
+}
